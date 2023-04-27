@@ -1,7 +1,9 @@
 import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
-export default function Menu() {
+const Menu: React.FC = () => {
+  const getActiveRoute = useLocation().pathname ? 'Active' : '';
+
   return (
     <Navbar bg="dark" expand="lg" variant='dark'>
       <Container>
@@ -10,15 +12,15 @@ export default function Menu() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link 
-              className={(navData) => navData.isActive ? 'Active' : ''} // navData vem do react-router-6
+              className={getActiveRoute}
               as={NavLink} 
-              to="/cliente/lista">
+              to="/cliente">
               Clientes
             </Nav.Link>
             <Nav.Link 
-              className={(navData) => navData.isActive ? 'Active' : ''} // navData vem do react-router-6
+              className={getActiveRoute}
               as={NavLink} 
-              to="/atividade/lista">
+              to="/atividade">
               Atividades
             </Nav.Link>
           </Nav>
@@ -30,9 +32,6 @@ export default function Menu() {
               <NavDropdown.Item href="#action/3.2">
                 Configurações
               </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">
-                Something
-                </NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="#action/3.4">
                 Sair
@@ -44,3 +43,5 @@ export default function Menu() {
     </Navbar>
   )
 }
+
+export default Menu;

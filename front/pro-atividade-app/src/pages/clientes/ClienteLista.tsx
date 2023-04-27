@@ -41,11 +41,11 @@ const clientes = [
   }
 ]
 
-export default function ClienteLista() {
+const ClienteLista: React.FC = () => {
   const navigate = useNavigate();
   const [termoBusca, setTermoBusca] = useState('');
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTermoBusca(e.target.value);
   };
 
@@ -113,3 +113,5 @@ export default function ClienteLista() {
     </>
   )
 }
+
+export default ClienteLista;
